@@ -64,6 +64,9 @@ nav a.active {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+form input:focus {
+  border-left: 5px solid #66afe9 !important; /* blue */ 
+}
 .ng-valid[required], .ng-pristine[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */
 }

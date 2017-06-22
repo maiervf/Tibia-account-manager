@@ -1,59 +1,52 @@
 <div class="container">
-    <div [hidden]="submitted">
-      <h1>Create Account</h1>
-      <form #accountForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="name">Username</label>
-          <input type="text" class="form-control" id="name" required
-          [(ngModel)]="model.name" name="name"
-          #name="ngModel">
-          <div [hidden]="name.valid || name.untouched"
-               class="alert alert-danger">
-            Username is required
-          </div>
-        </div>
-   
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="text" class="form-control" id="password" required
-          [(ngModel)]="model.password" name="password"
-          #password="ngModel">
-          <div [hidden]="password.valid || password.untouched"
-               class="alert alert-danger">
-            Password is required
-          </div>
-        </div>
+	<div [hidden]="submitted">
+		<form #accountForm="ngForm" (ngSubmit)="onSubmit()">
+			<h1>Create Account</h1>
+			<div class="form-group">
+				<label for="name">Username</label>
+				<input type="text" class="form-control" id="name" required 
+				[(ngModel)]="model.name" name="name" #name="ngModel">
+				<div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+					Username is required
+				</div>
+			</div>
 
-        <div class="form-group">
-          <label for="confirm-password">Confirm your password</label>
-          <input type="text" class="form-control" id="confirm-password" required
-          [(ngModel)]="model.confirm_password" name="confirm_password"
-          #confirm_password="ngModel">
-          <div [hidden]="confirm_password.valid || confirm_password.pristine"
-               class="alert alert-danger">
-            Confirm your password
-          </div>
-        </div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="text" class="form-control" id="password" required
+				[(ngModel)]="model.password" name="password" #password="ngModel">
+				<div [hidden]="password.valid || password.untouched" class="alert alert-danger">
+					Password is required
+				</div>
+			</div>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" required
-          [(ngModel)]="model.email" name="email"
-          #email="ngModel">
-          <div [hidden]="email.valid || email.untouched"
-               class="alert alert-danger">
-            Email is required
-          </div>
-        </div>
-   
-        <button type="submit" class="btn btn-success" [disabled]="!accountForm.form.valid">Create Account</button>
-   
-      </form>
-    </div>
-    <div [hidden]="!submitted">
-      <h1>Thank You for registering!</h1>
-      <h4>We send a mail to {{model.email}}. You need to active your account before login.</h4>
-      <br>
-      <button type="button" class="btn btn-primary">Back</button>
-    </div>
+			<div class="form-group">
+				<label for="confirm-password">Confirm your password</label>
+				<input type="text" class="form-control" id="confirm-password" required
+				[(ngModel)]="model.confirm_password" name="confirm_password"
+				#confirm_password="ngModel">
+				<div [hidden]="confirm_password.valid || confirm_password.pristine" class="alert alert-danger">
+					Confirm your password
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="text" class="form-control" id="email" required
+				[(ngModel)]="model.email" name="email"
+				#email="ngModel">
+				<div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+					Email is required
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-success" [disabled]="!accountForm.form.valid">Create Account</button>
+		</form>
+	</div>
+	<div [hidden]="!submitted">
+		<h1>Thank You for registering!</h1>
+		<h4>We send a mail to {{model.email}}. You need to active your account before login.</h4>
+		<br>
+		<button type="button" class="btn btn-primary">Back</button>
+	</div>
 </div>
