@@ -15,5 +15,13 @@ return [
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        //database
+        'db' => [
+            'host' => 'localhost',
+            'login' => 'root',
+            'password' => 'root',
+            'dbname' => 'tibiaot',
+        ]
     ],
 ];
