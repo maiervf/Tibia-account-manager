@@ -1,17 +1,29 @@
-import { Component } from '@angular/core';
-
-import { Account } from './account';
+import { Component, OnInit } from '@angular/core';
+import { AccountService }    from './account-service';
+import { Account } 					 from './account';
 
 @Component({
-  selector: 'account-form',
-  templateUrl: './account-form.component.html'
+	selector: 'account-form',
+	templateUrl: './account-form.component.html',
+	providers: [AccountService]
 })
 
-export class AccountFormComponent {
+export class AccountFormComponent implements OnInit{
+	constructor (private accountService: AccountService) {  }
+	
+	accounts: Account[];
+	model = new Account();
+	submitted = false;
 
-  model = new Account();
+	ngOnInit() { 
+		this.getAccounts(); 
+	}
 
-  submitted = false;
+	getAccounts() {
+		this.accountService.getAccounts().subscribe(accounts => this.accounts = accounts);
+	}
 
-  onSubmit() { this.submitted = true; }
+	onSubmit() { 
+		this.submitted = true; 
+	}
 }
