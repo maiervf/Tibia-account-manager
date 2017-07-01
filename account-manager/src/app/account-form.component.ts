@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService }    from './account-service';
-import { Account } 					 from './account';
+import { Account } 			 from './account';
 
 @Component({
 	selector: 'account-form',
@@ -23,7 +23,8 @@ export class AccountFormComponent implements OnInit{
 		this.accountService.getAccounts().subscribe(accounts => this.accounts = accounts);
 	}
 
-	onSubmit() { 
+	onSubmit() {
+		this.accountService.submitForm(this.model).subscribe(response => console.log(response));
 		this.submitted = true; 
 	}
 }

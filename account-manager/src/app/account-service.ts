@@ -13,15 +13,17 @@ export class AccountService {
 	constructor (private http: Http) {  }
 
 	getAccounts(): Observable<Account[]> {
-		return this.http.get(this.serverAddress).map(res => res.json());
+		return this.http.get(this.serverAddress).map(response => response.json());
 	}
 
-	create(name: string): Observable<Account> {
+	submitForm(account: Account): Observable<Account> {
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		return this.http.post(this.serverAddress, { name }, options)
-										.map(res => res.json());
+		return this.http.post(
+			this.serverAddress, 
+			JSON.stringify(account), 
+			options).map(response => response.json());
 	}
 
 }
