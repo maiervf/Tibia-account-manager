@@ -28,8 +28,10 @@ class AccountModel {
 		return $result['not_unique'];
 	}
 
-	public function save($data) {
-		// not implemented yet
+	public function create($data) {
+		$baseQuery = "INSERT INTO accounts(name, email, password, creation) values (?, ?, ?, NOW())";
+		$statement = $this->container->db->prepare($baseQuery);
+		return $statement->execute([$data['name'], $data['email'], sha1($data['password'])]);
 	}
 
 	public function loginValid($user, $pass) {

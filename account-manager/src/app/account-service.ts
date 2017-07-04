@@ -8,12 +8,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AccountService {
 	
-	private serverAddress = "http://127.0.0.1:8080/showAccounts";  // URL to web API
+	private serverAddress = "http://127.0.0.1:8080/";
 
 	constructor (private http: Http) {  }
 
 	getAccounts(): Observable<Account[]> {
-		return this.http.get(this.serverAddress).map(response => response.json());
+		return this.http.get(this.serverAddress + 'showAccounts').map(response => response.json());
 	}
 
 	submitForm(account: Account): Observable<Account> {
@@ -21,7 +21,7 @@ export class AccountService {
 		let options = new RequestOptions({ headers: headers });
 
 		return this.http.post(
-			this.serverAddress, 
+			this.serverAddress + 'createAccount', 
 			JSON.stringify(account), 
 			options).map(response => response.json());
 	}

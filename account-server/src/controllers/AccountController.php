@@ -24,12 +24,9 @@ class AccountController {
 	}
 
 	public function createAccount($request, $response, $args) {
-		// not implemented yet
-		// $postData = $request->getParsedBody();		
-		// foreach($postData as $key => $param) {
-		// 	// Arrange the data for save
-		// }
-		$this->container->renderer->render($response, 'index.phtml');
+		$postData = $request->getParsedBody();
+		$this->container->logger->info(json_encode($postData));
+		return $this->container->Account->create($postData);
 	}
 }
 
