@@ -2,24 +2,19 @@
 
 namespace App\controllers;
 
-class AccountController
-{
+class AccountController {
 
 	protected $container;
 
-	// constructor receives container instance
-	public function __construct($container)
-	{
+	public function __construct($container) {
 		$this->container = $container;
 	}
 
-	public function validateEmail($request, $response, $args)
-	{
+	public function validateEmail($request, $response, $args) {
 		return $this->container->Account->unique('email', $args['email']);
 	}
 
-	public function validateUsername($request, $response, $args)
-	{
+	public function validateUsername($request, $response, $args) {
 		return $this->container->Account->unique('name', $args['user']);
 	}
 
@@ -28,8 +23,7 @@ class AccountController
 		return json_encode($statement->fetchAll());
 	}
 
-	public function createAccount($request, $response, $args)
-	{
+	public function createAccount($request, $response, $args) {
 		// not implemented yet
 		// $postData = $request->getParsedBody();		
 		// foreach($postData as $key => $param) {
