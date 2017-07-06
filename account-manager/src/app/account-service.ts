@@ -26,4 +26,13 @@ export class AccountService {
 			options).map(response => response.json());
 	}
 
+	login(account: Account): Observable<Account> {
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(
+			this.serverAddress + 'login', 
+			JSON.stringify(account), 
+			options).map(response => response.json());	
+	}
+
 }

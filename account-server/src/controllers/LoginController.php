@@ -15,7 +15,7 @@ class LoginController {
 			return json_encode(['valid' => false, 'msg' => 'Account or Password not sended.']]);
 		}
 
-		$account = $this->container->Account->login($request['name'], $request['password']);
+		$account = $this->container->Account->loginValid($request['name'], $request['password']);
         
         if (empty($account)) {
         	return json_encode(['valid' => false, 'msg' => 'Login invalid.']]);

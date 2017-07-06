@@ -2,24 +2,59 @@
     <div class="container">
 		<div class="row">
 			<div class="col-md-4 login-sec">
-		    	<h2 class="text-center">Login Now</h2>
-		   		<form class="login-form">
-  					<div class="form-group">
-					    <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-					    <input type="text" class="form-control" placeholder="">
-					    
-				    </div>
-  					<div class="form-group">
-					    <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-					    <input type="password" class="form-control" placeholder="">
-					</div>
-  
-  		
-				    <div class="form-check">
-				    	<button type="submit" class="btn btn-login float-left">Submit</button>
-				   </div>
-				</form>
-				<div class="copy-text">Doesn't have an account? <a href="#">Please Sign up</a></div>
+				<div [hidden]="formType != 'login'">
+			    	<h2 class="text-center">Login Now</h2>
+			   		<form class="login-form" #loginForm="ngForm">
+	  					<div class="form-group">
+						    <label for="exampleInputEmail1">Username</label>
+						    <input name="name" type="text" class="form-control" placeholder=""
+						    [(ngModel)]="loginForm.name" name="name" #name="ngModel">
+					    </div>
+	  					<div class="form-group">
+						    <label for="exampleInputPassword1">Password</label>
+						    <input type="password" class="form-control" placeholder=""
+						    [(ngModel)]="loginForm.password" name="password" #password="ngModel">
+						</div>
+	  		
+					    <div class="form-check">
+					    	<button name="password" type="button" (click)="login()" class="btn btn-login float-left">Submit</button>
+					   	</div>
+					</form>
+					<div class="copy-text">Doesn't have an account? <a (click)="setForm('signin')">Please Sign up</a></div>
+				</div>
+				<div [hidden]="formType != 'signin'">
+					<h2 class="text-center">Register Now</h2>
+					<form class="login-form" #accountForm="ngForm" (ngSubmit)="onSubmit()">
+						<div class="form-group">
+							<label for="name">Username</label>
+							<input type="text" class="form-control" id="name" required 
+							[(ngModel)]="signin.name" name="name" #name="ngModel">
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="text" class="form-control" id="password" required
+							[(ngModel)]="signin.password" name="password" #password="ngModel">
+						</div>
+
+						<div class="form-group">
+							<label for="confirm-password">Confirm your password</label>
+							<input type="text" class="form-control" id="confirm-password" required
+							[(ngModel)]="signin.confirm_password" name="confirm_password"
+							#confirm_password="ngModel">
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="text" class="form-control" id="email" required
+							[(ngModel)]="signin.email" name="email"
+							#email="ngModel">
+						</div>
+						 <div class="form-check">
+						 	<button type="submit" class="btn btn-login float-left">Create Account</button>
+						</div>
+						<div class="copy-text">Already have an account? <a (click)="setForm('login')">Please Login</a></div>
+					</form>
+				</div>
 			</div>
 			<div class="col-md-8 banner-sec">
             	<div class="banner-text">
@@ -32,52 +67,10 @@
 </div>
 
 <div [hidden]="true" class="container">
-	<div [hidden]="submitted">
-		<form #accountForm="ngForm" (ngSubmit)="onSubmit()">
-			<h1>Create Account</h1>
-			<div class="form-group">
-				<label for="name">Username</label>
-				<input type="text" class="form-control" id="name" required 
-				[(ngModel)]="model.name" name="name" #name="ngModel">
-				<div [hidden]="name.valid || name.untouched" class="alert alert-danger">
-					Username is required
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="text" class="form-control" id="password" required
-				[(ngModel)]="model.password" name="password" #password="ngModel">
-				<div [hidden]="password.valid || password.untouched" class="alert alert-danger">
-					Password is required
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="confirm-password">Confirm your password</label>
-				<input type="text" class="form-control" id="confirm-password" required
-				[(ngModel)]="model.confirm_password" name="confirm_password"
-				#confirm_password="ngModel">
-				<div [hidden]="confirm_password.valid || confirm_password.pristine" class="alert alert-danger">
-					Confirm your password
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="email">Email</label>
-				<input type="text" class="form-control" id="email" required
-				[(ngModel)]="model.email" name="email"
-				#email="ngModel">
-				<div [hidden]="email.valid || email.untouched" class="alert alert-danger">
-					Email is required
-				</div>
-			</div>
-
-			<button type="submit" class="btn btn-success" [disabled]="!accountForm.form.valid">Create Account</button>
-		</form>
-	</div>
+	
 	<div [hidden]="!submitted">
 		<h1>Thank You for registering!</h1>
-		<h4>We send a mail to {{model.email}}. You need to active your account before login.</h4>
+		<h4>We send a mail to {{signin.email}}. You need to active your account before login.</h4>
 		<br>
 		<button type="button" class="btn btn-primary">Back</button>
 	</div>

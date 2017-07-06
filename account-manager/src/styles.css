@@ -11,6 +11,7 @@ form input:focus {
 .ng-invalid:not(form):not(.ng-untouched)  {
   border-left: 5px solid #a94442; /* red */
 }
+a {cursor: pointer}
 
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 .login-block{
@@ -21,7 +22,7 @@ form input:focus {
     width:100%;
     padding: 50px 0;
 }
-.login-sec{padding: 50px 30px; position:relative;}
+.login-sec{padding: 30px 30px 50px 30px; position:relative;}
 .login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
 .login-sec .copy-text i{color:#8FBE00;}
 .login-sec .copy-text a{color:#8FBE00;}
@@ -31,13 +32,8 @@ form input:focus {
 .btn-login {background: #AEE239; color:#fff; font-weight:600;}
 .btn-login:hover {background: #8FBE00; color:#fff; font-weight:600;}
 .container {background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
-.banner-sec {background:url(http://i.imgur.com/1shsgxX.jpg)  no-repeat left top; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0;}
+.banner-sec {background:url(http://i.imgur.com/1shsgxX.jpg)  no-repeat left top; background-size:cover; min-height:520px; border-radius: 0 10px 10px 0;}
 .banner-text {width:70%; position:absolute; bottom:40px; padding-left:20px; background-color: rgba(0,0,0,0.8)}
 .banner-text h2{color:#fff; font-weight:600;}
 .banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
 .banner-text p{color:#fff;}
-/*
-Copyright 2017 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

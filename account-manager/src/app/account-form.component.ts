@@ -12,8 +12,10 @@ export class AccountFormComponent implements OnInit{
 	constructor (private accountService: AccountService) {  }
 	
 	accounts: Account[];
-	model = new Account();
+	loginForm = new Account();
+	signin = new Account();
 	submitted = false;
+	formType = "login";
 
 	ngOnInit() { 
 		this.getAccounts(); 
@@ -24,7 +26,15 @@ export class AccountFormComponent implements OnInit{
 	}
 
 	onSubmit() {
-		this.accountService.submitForm(this.model).subscribe(response => console.log(response));
+		this.accountService.submitForm(this.signin).subscribe(response => console.log(response));
 		this.submitted = true; 
+	}
+
+	setForm(type) {
+		this.formType = type;
+	}
+
+	login() {
+		this.accountService.login(this.loginForm).subscribe(response => console.log(response));
 	}
 }
