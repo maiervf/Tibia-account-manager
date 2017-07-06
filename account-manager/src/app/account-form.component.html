@@ -1,4 +1,37 @@
-<div class="container">
+<div class="login-block">
+    <div class="container">
+		<div class="row">
+			<div class="col-md-4 login-sec">
+		    	<h2 class="text-center">Login Now</h2>
+		   		<form class="login-form">
+  					<div class="form-group">
+					    <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+					    <input type="text" class="form-control" placeholder="">
+					    
+				    </div>
+  					<div class="form-group">
+					    <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+					    <input type="password" class="form-control" placeholder="">
+					</div>
+  
+  		
+				    <div class="form-check">
+				    	<button type="submit" class="btn btn-login float-left">Submit</button>
+				   </div>
+				</form>
+				<div class="copy-text">Doesn't have an account? <a href="#">Please Sign up</a></div>
+			</div>
+			<div class="col-md-8 banner-sec">
+            	<div class="banner-text">
+	    			<h2>OTs Account Manager</h2>
+	    			<p>Create accounts, characters and edit your char, no more editions with phpMyAdmin!</p>
+	  			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div [hidden]="true" class="container">
 	<div [hidden]="submitted">
 		<form #accountForm="ngForm" (ngSubmit)="onSubmit()">
 			<h1>Create Account</h1>
