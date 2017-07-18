@@ -11,19 +11,22 @@ class LoginController {
 	}
 
 	public function login($request, $response, $args) {
-		if (empty($request['name']) || empty($request['password'])) {
-			return json_encode(['valid' => false, 'msg' => 'Account or Password not sended.']]);
+		$postData = $request->getParsedBody();
+		$this->container->logger->info(json_encode($request));
+		if (empty($postData['name']) || empty($postData['password'])) {
+			return json_encode(['valid' => false, 'msg' => 'Account or Password not sended.']);
 		}
 
-		$account = $this->container->Account->loginValid($request['name'], $request['password']);
+		$account = $this->container->Account->loginValid($postData['name'], $postData['password']);
         
         if (empty($account)) {
-        	return json_encode(['valid' => false, 'msg' => 'Login invalid.']]);
+        	return json_encode(['valid' => false, 'msg' => 'Login invalid.']);
         }
 
-        $data['user'] = $request['name'];
+        $data['user'] = $postData['name'];
         $data['token'] = bin2hex(openssl_random_pseudo_bytes(12));
-
+        // $data['token'] = '1223';
+        $this->container->logger->info(json_encode($data));
 		$this->container->Account->updateAccountToken($data);
         return json_encode($data);
     }

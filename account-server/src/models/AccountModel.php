@@ -31,14 +31,15 @@ class AccountModel {
 	public function create($data) {
 		$baseQuery = "INSERT INTO accounts(name, email, password, creation) values (?, ?, ?, NOW())";
 		$statement = $this->container->db->prepare($baseQuery);
-		return $statement->execute([$data['name'], $data['email'], sha1($data['password'])]);
+		$statement->execute([$data['name'], $data['email'], sha1($data['password'])]);
+		return '1';
 	}
 
 	public function loginValid($user, $pass) {
 		$baseQuery = "SELECT * FROM accounts WHERE name = :user AND password = :password";
 		$statement = $this->container->db->prepare($baseQuery);
 		$statement->bindValue(':user', $user);
-		$statement->bindValue(':password', $pass);
+		$statement->bindValue(':password', sha1($pass));
 		$statement->execute();
 		return $statement->fetch();
 	}

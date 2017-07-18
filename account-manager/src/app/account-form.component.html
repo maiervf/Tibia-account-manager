@@ -4,20 +4,20 @@
 			<div class="col-md-4 login-sec">
 				<div [hidden]="formType != 'login'">
 			    	<h2 class="text-center">Login Now</h2>
-			   		<form class="login-form" #loginForm="ngForm">
+			   		<form class="login-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
 	  					<div class="form-group">
-						    <label for="exampleInputEmail1">Username</label>
+						    <label for="name">Username</label>
 						    <input name="name" type="text" class="form-control" placeholder=""
 						    [(ngModel)]="loginForm.name" name="name" #name="ngModel">
 					    </div>
 	  					<div class="form-group">
-						    <label for="exampleInputPassword1">Password</label>
+						    <label for="password">Password</label>
 						    <input type="password" class="form-control" placeholder=""
 						    [(ngModel)]="loginForm.password" name="password" #password="ngModel">
 						</div>
 	  		
 					    <div class="form-check">
-					    	<button name="password" type="button" (click)="login()" class="btn btn-login float-left">Submit</button>
+					    	<button type="submit" class="btn btn-login float-left">Submit</button>
 					   	</div>
 					</form>
 					<div class="copy-text">Doesn't have an account? <a (click)="setForm('signin')">Please Sign up</a></div>

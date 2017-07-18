@@ -31,7 +31,7 @@ export class AccountService {
 		let options = new RequestOptions({ headers: headers });
 		return this.http.post(
 			this.serverAddress + 'login', 
-			JSON.stringify(account), 
+			JSON.stringify({name: account.name, password: account.password}), 
 			options).map(response => response.json());	
 	}
 

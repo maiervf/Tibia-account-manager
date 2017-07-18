@@ -12,7 +12,6 @@ export class AccountFormComponent implements OnInit{
 	constructor (private accountService: AccountService) {  }
 	
 	accounts: Account[];
-	loginForm = new Account();
 	signin = new Account();
 	submitted = false;
 	formType = "login";
@@ -34,7 +33,7 @@ export class AccountFormComponent implements OnInit{
 		this.formType = type;
 	}
 
-	login() {
-		this.accountService.login(this.loginForm).subscribe(response => console.log(response));
+	login(loginForm) {
+		this.accountService.login(loginForm).subscribe(response => console.log(response));
 	}
 }

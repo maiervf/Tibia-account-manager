@@ -32,6 +32,12 @@ $container['AccountController'] = function($c) {
     return new App\controllers\AccountController($c);
 };
 
+// Load controllers for routes
+$container['LoginController'] = function($c) {
+    return new App\controllers\LoginController($c);
+};
+
+
 // Load models
 $container['Account'] = function($c) {
     return new App\models\AccountModel($c);
